@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Driver</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Edit Driver</h1>
+
+<form th:action="@{/drivers/edit}" th:object="${driver}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" /><br/><br/>
+
+    <label>Experience (years):</label>
+    <input type="number" th:field="*{experience}" /><br/><br/>
+
+    <label>Available:</label>
+    <input type="checkbox" th:field="*{available}" /><br/><br/>
+
+    <label>Total Earnings:</label>
+    <input type="text" th:field="*{totalEarnings}" readonly /><br/><br/>
+
+    <button type="submit">Update</button>
+</form>
+
+<a href="/drivers">← Back to Driver List</a>
+</body>
+</html>

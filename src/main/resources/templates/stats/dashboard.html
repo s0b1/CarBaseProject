@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics Dashboard</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Statistics Dashboard</h1>
+
+<h2>op Earning Driver</h2>
+<p th:if="${topDriver != null}">
+    <b th:text="${topDriver.name}"></b> —
+    <span th:text="${topDriver.totalEarnings} + ' $'"></span>
+</p>
+<p th:if="${topDriver == null}">No drivers found.</p>
+
+<hr/>
+
+<h2>Total Earnings Per Driver</h2>
+<table border="1" cellpadding="6" th:if="${earningsPerDriver != null and !earningsPerDriver.isEmpty()}">
+    <thead>
+    <tr><th>Driver</th><th>Earnings ($)</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${earningsPerDriver}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${#numbers.formatDecimal(entry.value, 1, 2)}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:if="${earningsPerDriver == null or earningsPerDriver.isEmpty()}">No earnings data available.</p>
+
+<hr/>
+
+<h2>Cargo Weight Per Destination</h2>
+<table border="1" cellpadding="6" th:if="${cargoPerDestination != null and !cargoPerDestination.isEmpty()}">
+    <thead>
+    <tr><th>Destination</th><th>Total Weight (kg)</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${cargoPerDestination}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${#numbers.formatDecimal(entry.value, 1, 2)}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:if="${cargoPerDestination == null or cargoPerDestination.isEmpty()}">No cargo data found.</p>
+
+<hr/>
+
+<h2>Cargo Weight Per Driver</h2>
+<table border="1" cellpadding="6" th:if="${cargoPerDriver != null and !cargoPerDriver.isEmpty()}">
+    <thead>
+    <tr><th>Driver</th><th>Total Cargo (kg)</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${cargoPerDriver}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${#numbers.formatDecimal(entry.value, 1, 2)}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:if="${cargoPerDriver == null or cargoPerDriver.isEmpty()}">No cargo records found for drivers.</p>
+
+<br/>
+<a href="/">← Back to Home</a>
+</body>
+</html>

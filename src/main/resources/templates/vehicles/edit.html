@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vehicle</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Edit Vehicle</h1>
+
+<form th:action="@{/vehicles/edit}" th:object="${vehicle}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Type:</label>
+    <input type="text" th:field="*{type}" required/><br/><br/>
+
+    <label>Load Capacity (kg):</label>
+    <input type="number" th:field="*{loadCapacity}" step="0.01" required/><br/><br/>
+
+    <label>Condition:</label>
+    <select th:field="*{condition}">
+        <option value="GOOD">GOOD</option>
+        <option value="BROKEN">BROKEN</option>
+    </select><br/><br/>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<br/>
+<a href="/vehicles">← Back to Vehicle List</a>
+</body>
+</html>

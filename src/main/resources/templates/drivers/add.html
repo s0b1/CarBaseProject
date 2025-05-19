@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Driver</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Add New Driver</h1>
+<form action="#" th:action="@{/drivers/add}" th:object="${driver}" method="post">
+    Name: <input type="text" th:field="*{name}" /><br/>
+    Experience: <input type="number" th:field="*{experience}" /><br/>
+    <button type="submit">Save</button>
+</form>
+<a href="/drivers">Back</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Cargo Request</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Add Cargo Request</h1>
+
+<form th:action="@{/cargo/add}" th:object="${cargoRequest}" method="post">
+    <label>Destination:</label>
+    <input type="text" th:field="*{destination}" /><br/><br/>
+
+    <label>Cargo Type:</label>
+    <input type="text" th:field="*{cargoType}" /><br/><br/>
+
+    <label>Weight (kg):</label>
+    <input type="number" step="0.1" th:field="*{weight}" /><br/><br/>
+
+    <button type="submit">Save</button>
+</form>
+
+<a href="/cargo">← Back to List</a>
+</body>
+</html>

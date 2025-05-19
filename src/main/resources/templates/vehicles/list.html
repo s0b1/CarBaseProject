@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicles</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Vehicle List</h1>
+
+<a href="/vehicles/add">+ Add Vehicle</a>
+<br/><br/>
+
+<table border="1" cellpadding="8">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Capacity (kg)</th>
+        <th>Condition</th>
+        <th>Available</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="v : ${vehicles}">
+        <td th:text="${v.id}"></td>
+        <td th:text="${v.type}"></td>
+        <td th:text="${v.loadCapacity}"></td>
+        <td th:text="${v.condition}"></td>
+        <td th:text="${v.available}"></td>
+        <td>
+            <a th:href="@{/vehicles/edit/{id}(id=${v.id})}">Edit</a>
+            <a th:href="@{/vehicles/delete/{id}(id=${v.id})}">Delete</a>
+        </td>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a href="/">← Back to Home</a>
+</body>
+</html>

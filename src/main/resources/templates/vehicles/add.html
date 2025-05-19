@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Vehicle</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Add New Vehicle</h1>
+
+<form th:action="@{/vehicles/add}" th:object="${vehicle}" method="post">
+    <label>Type:</label>
+    <input type="text" th:field="*{type}" /><br/><br/>
+
+    <label>Load Capacity (kg):</label>
+    <input type="number" th:field="*{loadCapacity}" step="0.1" /><br/><br/>
+
+    <label>Condition:</label>
+    <input type="text" th:field="*{condition}" value="GOOD" /><br/><br/>
+
+    <button type="submit">Save</button>
+</form>
+
+<a href="/vehicles">Back to Vehicle List</a>
+</body>
+</html>

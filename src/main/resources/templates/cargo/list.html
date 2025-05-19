@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargo Requests</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Cargo Requests</h1>
+
+<a href="/cargo/add">+ Add Cargo Request</a>
+<br/><br/>
+
+<table border="1" cellpadding="8">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Destination</th>
+        <th>Type</th>
+        <th>Weight</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="req : ${requests}">
+        <td th:text="${req.id}"></td>
+        <td th:text="${req.destination}"></td>
+        <td th:text="${req.cargoType}"></td>
+        <td th:text="${req.weight}"></td>
+        <td>
+            <a th:href="@{/cargo/delete/{id}(id=${req.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a href="/">← Back to Home</a>
+</body>
+</html>

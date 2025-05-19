@@ -63,12 +63,13 @@ public class StatisticsService
         return driverTotals;
     }
 
-    public Map<String, Double> getEarningsPerDriver()
+    public Map<String, String> getEarningsPerDriver()
     {
         return driverRepository.findAll().stream()
                 .collect(Collectors.toMap(
                         Driver::getName,
-                        d -> d.getTotalEarnings().doubleValue()
+                        d -> d.getTotalEarnings() != null ? d.getTotalEarnings().toString() : "0.0"
                 ));
     }
+
 }

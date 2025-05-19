@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Drivers</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Drivers</h1>
+
+<a href="/drivers/add">+ Add Driver</a>
+<br/><br/>
+
+<table border="1" cellpadding="8">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Experience</th>
+        <th>Available</th>
+        <th>Total Earnings</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="d : ${drivers}">
+        <td th:text="${d.id}"></td>
+        <td th:text="${d.name}"></td>
+        <td th:text="${d.experience}"></td>
+        <td th:text="${d.available ? 'Yes' : 'No'}"></td>
+        <td th:text="${d.totalEarnings}"></td>
+        <td>
+            <a th:href="@{/drivers/edit/{id}(id=${d.id})}">Edit</a>
+            <a th:href="@{/drivers/delete/{id}(id=${d.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a href="/">← Back to Home</a>
+</body>
+</html>

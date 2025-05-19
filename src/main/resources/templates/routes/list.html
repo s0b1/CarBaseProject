@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Routes</title>
+    <style>
+        body
+        {
+            background-image: url('/img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Routes</h1>
+
+<table border="1" cellpadding="8">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Driver</th>
+        <th>Vehicle</th>
+        <th>Destination</th>
+        <th>Type</th>
+        <th>Weight (kg)</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${routes}">
+        <td th:text="${r.id}"></td>
+        <td th:text="${r.driver != null ? r.driver.name : '—'}"></td>
+        <td th:text="${r.vehicle != null ? r.vehicle.type : '—'}"></td>
+        <td th:text="${r.cargoRequest != null ? r.cargoRequest.destination : '—'}"></td>
+        <td th:text="${r.cargoRequest != null ? r.cargoRequest.cargoType : '—'}"></td>
+        <td th:text="${r.cargoRequest != null ? r.cargoRequest.weight : '—'}"></td>
+        <td th:text="${r.completed ? 'Completed' : 'In Progress'}"></td>
+        <td>
+            <a th:if="${!r.completed}" th:href="@{/routes/complete/{id}(id=${r.id})}">Mark Completed</a>
+            <span th:if="${r.completed}">✅</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a href="/">← Back to Home</a>
+</body>
+</html>
