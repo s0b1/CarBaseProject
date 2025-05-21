@@ -37,8 +37,15 @@ public class CargoRequestController
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteRequest(@PathVariable Long id)
-    {
+    public String showDeleteConfirmation(@PathVariable Long id, Model model) {
+        CargoRequest request = cargoRequestService.getRequestById(id)
+                .orElseThrow(() -> new RuntimeException("Cargo request not found with ID: " + id));
+        model.addAttribute("cargoRequest", request);
+        return "cargo/delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteRequest(@PathVariable Long id) {
         cargoRequestService.deleteRequest(id);
         return "redirect:/cargo";
     }

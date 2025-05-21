@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <title>Add Vehicle</title>
     <style>
-        body
-        {
+        body {
             background-image: url('/img/background.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center center;
-
         }
     </style>
 </head>
@@ -26,11 +24,18 @@
     <input type="number" th:field="*{loadCapacity}" step="0.1" /><br/><br/>
 
     <label>Condition:</label>
-    <input type="text" th:field="*{condition}" value="GOOD" /><br/><br/>
+    <select th:field="*{condition}">
+        <option value="GOOD">GOOD</option>
+        <option value="BROKEN">BROKEN</option>
+    </select><br/><br/>
 
     <button type="submit">Save</button>
 </form>
 
 <a href="/vehicles">Back to Vehicle List</a>
+<p style="position: fixed; top: 10px; right: 10px; font-size: 24px; color: darkblue;">
+    Logged in as: <span th:text="${#authentication.name}">user</span>
+</p>
+
 </body>
 </html>

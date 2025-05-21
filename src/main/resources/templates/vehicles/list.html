@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <title>Vehicles</title>
     <style>
-        body
-        {
+        body {
             background-image: url('/img/background.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center center;
-
         }
     </style>
 </head>
 <body>
 <h1>Vehicle List</h1>
 
-<a href="/vehicles/add">+ Add Vehicle</a>
+<div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+    <a href="/vehicles/add">+ Add Vehicle</a>
+</div>
+
 <br/><br/>
 
 <table border="1" cellpadding="8">
@@ -40,10 +41,11 @@
         <td th:text="${v.condition}"></td>
         <td th:text="${v.available}"></td>
         <td>
-            <a th:href="@{/vehicles/edit/{id}(id=${v.id})}">Edit</a>
-            <a th:href="@{/vehicles/delete/{id}(id=${v.id})}">Delete</a>
-        </td>
 
+            <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <a th:href="@{/vehicles/edit/{id}(id=${v.id})}">Edit</a>
+                <a th:href="@{/vehicles/delete/{id}(id=${v.id})}">Delete</a>
+            </span>
         </td>
     </tr>
     </tbody>
@@ -51,5 +53,9 @@
 
 <br/>
 <a href="/">← Back to Home</a>
+<p style="position: fixed; top: 10px; right: 10px; font-size: 24px; color: darkblue;">
+    Logged in as: <span th:text="${#authentication.name}">user</span>
+</p>
 </body>
 </html>
+

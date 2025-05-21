@@ -42,11 +42,21 @@ public class VehicleController
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteVehicle(@PathVariable Long id)
+    public String showDeleteConfirmation(@PathVariable Long id, Model model)
     {
+        Vehicle vehicle = vehicleService.getVehicleById(id)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found with id: " + id));
+        model.addAttribute("vehicle", vehicle);
+        return "vehicles/delete";
+    }
+
+
+    @PostMapping("/delete/{id}")
+    public String deleteVehicle(@PathVariable Long id) {
         vehicleService.deleteVehicle(id);
         return "redirect:/vehicles";
     }
+
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model)

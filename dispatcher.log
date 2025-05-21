@@ -25,3 +25,23 @@
 [2025-05-17 19:58:24] Failed to assign cargo 'fuel' (384,27 kg) to destination 'Alderney': No suitable driver
 [2025-05-17 19:58:24] Failed to assign cargo 'chemicals' (235,72 kg) to destination 'Alderney': No suitable driver
 [2025-05-17 19:58:24] Failed to assign cargo 'chemicals' (888,95 kg) to destination 'Alderney': No suitable driver
+[2025-05-21 20:50:11] Assigned cargo 'chemicals' (526,32 kg) to Driver 'Candice Walker' and Vehicle 'Mini Truck'
+[2025-05-21 20:50:11] Assigned cargo 'fuel' (371,14 kg) to Driver 'Lincoln Walker' and Vehicle 'Van'
+[2025-05-21 20:50:11] Assigned cargo 'electronics' (486,14 kg) to Driver 'Carson Schneider' and Vehicle 'Mini Truck'
+[2025-05-21 20:50:11] Assigned cargo 'electronics' (735,60 kg) to Driver 'Candice Baker' and Vehicle 'Mini Truck'
+[2025-05-21 20:50:11] Assigned cargo 'fuel' (461,44 kg) to Driver 'Lincoln Fitzgerald' and Vehicle 'Box Truck'
+[2025-05-21 20:50:11] Assigned cargo 'fuel' (591,89 kg) to Driver 'Olivia Prestley' and Vehicle 'Box Truck'
+[2025-05-21 20:50:11] Assigned cargo 'fuel' (174,20 kg) to Driver 'Avery Baker' and Vehicle 'Box Truck'
+[2025-05-21 20:50:11] Assigned cargo 'chemicals' (416,64 kg) to Driver 'Patrick Schneider' and Vehicle 'Tanker'
+[2025-05-21 20:50:11] Assigned cargo 'chemicals' (799,35 kg) to Driver 'Aaron Clay' and Vehicle 'Tanker'
+[2025-05-21 20:50:11] Assigned cargo 'furniture' (431,26 kg) to Driver 'Patrick Sansavera' and Vehicle 'Tanker'
+[2025-05-21 20:57:08] Failed to assign cargo 'chemicals' (526,32 kg) to destination 'Liberty City': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'fuel' (371,14 kg) to destination 'Liberty City': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'electronics' (486,14 kg) to destination 'Empire Bay': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'electronics' (735,60 kg) to destination 'Liberty City': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'fuel' (461,44 kg) to destination 'Lost Heaven': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'fuel' (591,89 kg) to destination 'Empire Bay': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'fuel' (174,20 kg) to destination 'Lost Heaven': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'chemicals' (416,64 kg) to destination 'Empire Bay': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'chemicals' (799,35 kg) to destination 'New Bordeaux': No suitable driver
+[2025-05-21 20:57:08] Failed to assign cargo 'furniture' (431,26 kg) to destination 'New Bordeaux': No suitable driver

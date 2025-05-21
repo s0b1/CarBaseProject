@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <title>Routes</title>
     <style>
-        body
-        {
+        body {
             background-image: url('/img/background.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center center;
-
         }
     </style>
 </head>
@@ -41,7 +39,10 @@
         <td th:text="${r.cargoRequest != null ? r.cargoRequest.weight : '—'}"></td>
         <td th:text="${r.completed ? 'Completed' : 'In Progress'}"></td>
         <td>
-            <a th:if="${!r.completed}" th:href="@{/routes/complete/{id}(id=${r.id})}">Mark Completed</a>
+
+            <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <a th:if="${!r.completed}" th:href="@{/routes/complete/{id}(id=${r.id})}">Mark Completed</a>
+            </span>
             <span th:if="${r.completed}">✅</span>
         </td>
     </tr>
@@ -50,5 +51,8 @@
 
 <br/>
 <a href="/">← Back to Home</a>
+<p style="position: fixed; top: 10px; right: 10px; font-size: 24px; color: darkblue;">
+    Logged in as: <span th:text="${#authentication.name}">user</span>
+</p>
 </body>
 </html>

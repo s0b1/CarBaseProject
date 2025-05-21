@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/drivers")
 @RequiredArgsConstructor
-public class DriverController {
+public class DriverController
+{
 
     private final DriverService driverService;
 
@@ -39,8 +40,15 @@ public class DriverController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteDriver(@PathVariable Long id)
-    {
+    public String showDeleteConfirmation(@PathVariable Long id, Model model) {
+        Driver driver = driverService.getDriverById(id)
+                .orElseThrow(() -> new RuntimeException("Driver not found"));
+        model.addAttribute("driver", driver);
+        return "drivers/delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteDriver(@PathVariable Long id) {
         driverService.deleteDriver(id);
         return "redirect:/drivers";
     }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Car Base - Main</title>
+    <title>Carbase Home</title>
     <style>
         body
         {
@@ -16,13 +16,27 @@
     </style>
 </head>
 <body>
-<h1>Welcome to the car base</h1>
-<ul>
-    <li><a th:href="@{/drivers}">Drivers</a></li>
-    <li><a th:href="@{/vehicles}">Vehicles</a></li>
-    <li><a th:href="@{/cargo}">Cargo</a></li>
-    <li><a th:href="@{/routes}">Routes</a></li>
-    <li><a th:href="@{/stats}">Stats</a></li>
-</ul>
+<h1>Welcome to Carbase</h1>
+
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+    <p>Hello, <span th:text="${#authentication.name}">user</span>!</p>
+    <a href="/vehicles">Vehicles</a><br>
+    <a href="/drivers">Drivers</a><br>
+    <a href="/cargo">Cargo Requests</a><br>
+    <a href="/routes">Routes</a><br>
+    <a href="/stats">Statistics</a><br>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <a href="/login">Login</a><br>
+    <a href="/register">Register</a>
+</div>
+
+<p style="position: fixed; top: 10px; right: 10px; font-size: 24px; color: darkblue;">
+    Logged in as: <span th:text="${#authentication.name}">user</span>
+</p>
 </body>
 </html>
